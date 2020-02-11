@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+
+    <title>Serverless Languages</title>
+    <meta name="description" content="Find the list of programming languages supported by Serverless computing providers.">
+    <meta name="robots" content="index, follow">
+
+    <style type="text/css">
+      html {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+          "Fira Sans", "Droid Sans", "Helvetica Neue",
+          sans-serif;
+        background-color: #fff;
+        color: #000;
+        padding: 0 20px 20px 20px;
+      }
+      .info {
+        width: 500px;
+      }
+      .info, .chart {
+        float: left;
+      }
+      .chart {
+        padding: 30px 50px;
+      }
+      .heart {
+        color:#e25555;
+      }
+      footer {
+        clear: both;
+      }
+    </style>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['sankey']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'From');
+        data.addColumn('string', 'To');
+        data.addColumn('number', 'Weight');
+        data.addColumn({type:'string', role:'style'});
+        data.addRows([
+          [ 'C', 'Cloudflare Workers', 1, '' ],
+          [ 'C++', 'Cloudflare Workers', 1, '' ],
+          [ 'C#', 'AWS Lambda', 1, '' ],
+          [ 'C#', 'Azure Functions', 1, 'color: red' ],
+          [ 'F#', 'Azure Functions', 1, 'color: red' ],
+          [ 'Go', 'AWS Lambda', 1, '' ],
+          [ 'Go', 'Google Cloud Functions', 1, '' ],
+          [ 'Java', 'AWS Lambda', 1, '' ],
+          [ 'Java', 'Azure Functions', 1, 'color: red' ],
+          [ 'Java', 'IBM Cloud Functions', 1, '' ],
+          [ 'Java', 'Alibaba Function Compute', 1, 'color: blue' ],
+          [ 'Javascript', 'Firebase Cloud Functions', 1, '' ],
+          [ 'Javascript', 'AWS Lambda', 1, '' ],
+          [ 'Javascript', 'Google Cloud Functions', 1, '' ],
+          [ 'Javascript', 'Cloudflare Workers', 1, '' ],
+          [ 'Javascript', 'Azure Functions', 1, 'color: red' ],
+          [ 'Javascript', 'IBM Cloud Functions', 1, '' ],
+          [ 'Javascript', 'Alibaba Function Compute', 1, 'color: blue' ],
+          [ 'PowerShell', 'AWS Lambda', 1, '' ],
+          [ 'PowerShell', 'Azure Functions', 1, 'color: red' ],
+          [ 'PHP', 'IBM Cloud Functions', 1, '' ],
+          [ 'PHP', 'Alibaba Function Compute', 1, 'color: blue' ],
+          [ 'Python', 'AWS Lambda', 1, '' ],
+          [ 'Python', 'Azure Functions', 1, 'color: red' ],
+          [ 'Python', 'Google Cloud Functions', 1, '' ],
+          [ 'Python', 'IBM Cloud Functions', 1, '' ],
+          [ 'Python', 'Alibaba Function Compute', 1, 'color: blue' ],
+          [ 'Ruby', 'AWS Lambda', 1, '' ],
+          [ 'Rust', 'Cloudflare Workers', 1, '' ],
+          [ 'Swift', 'IBM Cloud Functions', 1, '' ],
+          [ 'Any language with Runtime API/Docker', 'AWS Lambda', 1, '' ],
+          [ 'Any language with Runtime API/Docker', 'IBM Cloud Functions', 1, '' ]
+        ]);
+
+        var colors = ['#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f',
+                      '#cab2d6', '#ffff99', '#1f78b4', '#33a02c'];
+
+        // Sets chart options.
+        var options = {
+          width: 500,
+          height: 600,
+          sankey: {
+            node: {
+              colorMode: 'unique',
+              nodePadding: 20,
+              label: {
+                fontSize: 14,
+              }
+            },
+            link: {
+              colorMode: 'target'
+            }
+          }
+        };
+
+        // Instantiates and draws our chart, passing in some options.
+        var chart = new google.visualization.Sankey(document.getElementById('sankey_basic'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+
+    <section class="info">
+      <h1>Serverless Architecture</h1>
+      <p>Serverless architecture allows you to focus on the development of application without thinking about the details of the infrastructure. Therefore, it saves you time in the development of your application.</p>
+      <p>You develop your functions and handlers and then connect events to your handlers. That's it. This approach also called Function as a Service (Faas).</p>
+      <h1>Serverless Infrastructure Providers</h1>
+      <p>There are a couple of cloud providers that have serverless service. They are Amazon Web Services (AWS), Azure, Google Cloud, Firebase, Cloudflare, IBM Cloud and Alibaba Cloud. There are differences between them. This article focuses on the supported programming languages of these cloud providers.</p>
+      <h1>Serverless Languages</h1>
+      <p>In the chart, the left-hand side lists the available programming languages and the right-hand side lists the cloud providers. If there is a link between language and cloud provider, that means this language is supported by that cloud provider. As you can see that not all languages supported by every cloud provider except AWS and IBM cloud has a Runtime API or Docker that supports every language on top of that. Javascript is the only language supported by every cloud provider.</p>
+    </section>
+
+    <section class="chart">
+      <div id="sankey_basic"></div>
+    </section>
+
+    <footer>
+      <img src="https://licensebuttons.net/l/by-nc-nd/3.0/88x31.png" alt="license">
+      <span>Made with <span class="heart">❤</span> in İzmir by Mustafa İlhan</span>
+    </footer>
+  </body>
+</html>
